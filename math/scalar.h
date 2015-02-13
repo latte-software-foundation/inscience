@@ -11,7 +11,7 @@ namespace math{
 	template<typename number> class scalar;
 }
 
-template<typename number> std::ostream& operator<<(std::ostream& output,math::scalar<number> const& value);
+template<typename number=math::real> std::ostream& operator<<(std::ostream& output,math::scalar<number> const& value);
 
 namespace math{
 	template<typename number=real> class scalar{

@@ -29,7 +29,7 @@ namespace math{
 	}
 }
 
-template<typename number=math::real> inline std::ostream& operator<<(std::ostream& out,math::scalar<number> const& s){
+template<typename number> inline std::ostream& operator<<(std::ostream& out,math::scalar<number> const& s){
 	return out << *(s.address);
 }
 
