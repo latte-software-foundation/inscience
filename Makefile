@@ -1,4 +1,4 @@
-OBJECTS := `find *.cpp */*.cpp | sed -r "s/^(\.git|bin|obj|in|out|\`find * -name "main.cpp" | sed -r 's/\/[^\/]+$$//' | xargs echo | tr ' ' '|'\`).*$$//" | grep -E ".+" | sed -r 's/cpp$$/o/' | sed -r 's/^/obj\//'`
+OBJECTS := `find */*.cpp | sed -r "s/^(\.git|bin|obj|in|out|\`find * -name "main.cpp" | sed -r 's/\/[^\/]+$$//' | xargs echo | tr ' ' '|'\`).*$$//" | grep -E ".+" | sed -r 's/cpp$$/o/' | sed -r 's/^/obj\//'`
 PROJECTS:= `find * -name "main.cpp" | sed -r 's/\/[^\/]+$$//'`
 CXXFLAGS:= -std=c++11 -fopenmp -pipe -w -O2 -Wall -W
 LIBS	:=
