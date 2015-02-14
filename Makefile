@@ -4,7 +4,7 @@ CXXFLAGS:= -std=c++11 -fopenmp -pipe -w -O2 -Wall -W
 LIBS	:=
 
 all:
-	for project in $(PROJECTS); do make ~$$project; done
+	@for project in $(PROJECTS); do make ~$$project; done
 
 obj/%.o: %.cpp
 	@echo "Compilando dependencia: '$<'..."
@@ -15,10 +15,11 @@ obj/%.o: %.cpp
 	@echo "Construyendo dependencias para '$<'..."
 	@for object in $(OBJECTS) `find $</*.cpp | sed -r 's/cpp$$/o/' | sed -r 's/^/obj\//'`; do make --silent $$object; done
 	@echo "Construyendo ejecutable de '$<'..."
+	@if [ ! -d bin ]; then mkdir bin; fi
 	@$(CXX) $(CXXFLAGS) $(OBJECTS) `find obj/$</*.o` -I. -o bin/$< $(LIBS)
 
 clean:
-	rm -f bin/* `find * | grep -E "\.o$$"`
+	@rm -f bin/* `find * | grep -E "\.o$$"`
 
 .SILENT: $(PROJECTS)
 
